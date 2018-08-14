@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import styles from './scss/Turns.scss';
 
 const renderTurns = (turns) => {
   return turns.map((turn,i) => {
@@ -21,16 +21,16 @@ const renderTurns = (turns) => {
                 </svg>);
     }
     return (
-      <div className="Turns" key={i}>
-        <div className="Guess">{turn.guess.map((guess,i) => <div className="number" key={i}>{guess}</div>)}</div>
-        <div className="Response">{pegs}</div>
+      <div className={styles.Turn} key={i}>
+        <div className={styles.Guess}>{turn.guess.map((guess,i) => <div className={styles.number} key={i}>{guess}</div>)}</div>
+        <div className={styles.Response}>{pegs}</div>
       </div>
     );
   });
 };
 const Turns = (props) => {
   return (
-    <div className="Turns">
+    <div className={styles.Turns}>
       {renderTurns(props.turns)}
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GuessForm from './GuessForm';
 import Turns from './Turns';
+import styles from './scss/Game.scss';
 
 class Game extends Component {
   state = {
@@ -66,7 +67,7 @@ class Game extends Component {
 
   render() {
     return (
-      <div className="Game">
+      <div className={styles.Game}>
         <GuessForm checkGuess={this.checkGuess} handleChange={this.handleChange}/>
         <Turns turns={this.state.turns}/>
       </div>

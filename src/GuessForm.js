@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './scss/GuessForm.scss';
 
 const GuessForm = (props) => {
   let inputs = [];
@@ -7,7 +8,7 @@ const GuessForm = (props) => {
   }
 
   return (
-    <form className="Guess" onSubmit={props.checkGuess}>
+    <form className={styles.Guess} onSubmit={props.checkGuess}>
       {inputs}
       <input type="submit" value="Submit" />
     </form>
