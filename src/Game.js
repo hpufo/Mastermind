@@ -7,7 +7,8 @@ class Game extends Component {
   state = {
     randomNumber: [],
     turns: [],
-    guess: ['','','','']
+    guess: ['','','',''],
+    gameOver: false,
   }
 
   componentDidMount(){
@@ -34,7 +35,7 @@ class Game extends Component {
   }
   checkGuess = (e) => {
     e.preventDefault();
-    let {guess} = this.state;
+    let {guess,turns,gameOver} = this.state;
     let uniqueGuesses = Array.from(new Set(guess));
     let randomNumber = [...this.state.randomNumber];
     let result = {
@@ -57,8 +58,12 @@ class Game extends Component {
         }
       }
     }
+    if(turns.length === 9 && result.rightPosition !== 4){
+      gameOver = true;
+    }
     this.setState({
-      turns: [...this.state.turns,{
+      gameOver: gameOver,
+      turns: [...turns,{
         guess: guess,
         result: result
       }]
@@ -66,6 +71,7 @@ class Game extends Component {
   }
 
   render() {
+    if(this.state.gameOver) console.log('Game Over')
     return (
       <div className={styles.Game}>
         <GuessForm checkGuess={this.checkGuess} handleChange={this.handleChange}/>
