@@ -4,7 +4,7 @@ import styles from './scss/GuessForm.scss';
 const GuessForm = (props) => {
   let inputs = [];
   for(let i=0; i<4; i++){
-    inputs[i] = <input type="text" onChange={props.handleChange.bind(this,i)} key={i} />;
+    inputs[i] = <input type="text" onChange={props.handleChange.bind(this,i)} value={props.guess[i]} key={i} />;
   }
 
   return (

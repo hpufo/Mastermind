@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './scss/Turns.scss';
 
 const renderTurns = (turns) => {
-  return turns.map((turn,i) => {
+  return turns.reverse().map((turn,i) => {
     let result = Object.assign({},turn.result);
     let pegs = [];
     let color;
