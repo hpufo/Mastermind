@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import GuessForm from './GuessForm';
 import Turns from './Turns';
-import {getScores} from './service/api';
+import {getScores} from '../service/api';
 import LeaderBoard from './LeaderBoard';
 import GameOver from './GameOver';
-import styles from './scss/Game.scss';
+import styles from '../scss/Game.scss';
 //Check multiple wins
 const initalState = {
   playerScores: [],

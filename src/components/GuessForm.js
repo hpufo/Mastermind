@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './scss/GuessForm.scss';
+import styles from '../scss/GuessForm.scss';
 
 const GuessForm = (props) => {
   let inputs = [];

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {saveScore} from './service/api';
-import styles from './scss/GameOver.scss';
+import {saveScore} from '../service/api';
+import styles from '../scss/GameOver.scss';
 
 class GameOver extends Component {
   state = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './scss/Turns.scss';
+import styles from '../scss/Turns.scss';
 
 const renderTurns = (turns) => {
   return turns.map((turn,i) => {

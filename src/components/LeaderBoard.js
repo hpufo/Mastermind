@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './scss/LeaderBoard.scss';
+import styles from '../scss/LeaderBoard.scss';
 
 const renderHighScores = (playerScores) => {
   let topPlayers = playerScores.sort((a,b) => {
