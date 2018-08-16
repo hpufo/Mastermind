@@ -1,7 +1,25 @@
-.Turns{}
-.Turn{}
-.Guess{}
-.Response{}
-.number{
-  
+.Turns{
+  display: inline-block;
+  background-color: sandybrown;
+  padding: 1em;
+}
+.Turn{
+  border: 1px solid black;
+  padding: 1em;
+}
+.Guess{
+  display: inline-block;
+}
+.Response{
+  display: inline-block;
+  width: 50px;
+  position: relative;
+  top: 10px;
+}
+.Number{
+  display: inline-block;
+  font-size: 3em;
+  padding: .005em .15em .005em .15em;
+  margin-right: .5em;
+  border: 1px solid black;
 }

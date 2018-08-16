@@ -20,7 +20,10 @@ class GameOver extends Component {
         this.setState({name: ''});
         this.props.reset();
       })
-      .catch(e => console.log(e));
+      .catch(e => {
+        console.log(e.message);
+        this.props.setMessage('Failed to save your score, sorry');
+      });
     }
   }
   scorePlayer(){

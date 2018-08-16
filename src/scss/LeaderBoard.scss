@@ -1,3 +1,21 @@
 .LeaderBoard{
   width: 20%;
 }
+.List{
+  list-style-type: none;
+  padding: 1em 5em;
+}
+.Row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.Number{
+  display: inline-block;
+}
+.Name{
+  display: inline-block;
+}
+.Score{
+  display: inline-block;
+}

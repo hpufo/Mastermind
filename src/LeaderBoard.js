@@ -9,9 +9,10 @@ const renderHighScores = (playerScores) => {
   }).slice(0,10);
 
   return topPlayers.map((player, i) => (
-    <li key={i}>
-      <div className={styles.name}>{player.name}</div>
-      <div className={styles.score}>{player.score}</div>
+    <li className={styles.Row} key={i}>
+      <div className={styles.Number}>{i+1})</div>
+      <div className={styles.Name}>{player.name}</div>
+      <div className={styles.Score}>{player.score}</div>
     </li>
   ));
 };
@@ -19,9 +20,9 @@ const renderHighScores = (playerScores) => {
 const LeaderBoard = (props) => {
   return (
     <div className={styles.LeaderBoard}>
-      <h1>Leader Board:</h1>
+      <h1>Leader Board</h1>
         {props.playerScores ? 
-        <ol>
+        <ol className={styles.List}>
           {renderHighScores(props.playerScores)}
         </ol>
         :

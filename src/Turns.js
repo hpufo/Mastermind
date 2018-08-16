@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './scss/Turns.scss';
 
 const renderTurns = (turns) => {
-  return turns.reverse().map((turn,i) => {
+  return turns.map((turn,i) => {
     let result = Object.assign({},turn.result);
     let pegs = [];
     let color;
@@ -22,18 +22,21 @@ const renderTurns = (turns) => {
     }
     return (
       <div className={styles.Turn} key={i}>
-        <div className={styles.Guess}>{turn.guess.map((guess,i) => <div className={styles.number} key={i}>{guess}</div>)}</div>
+        <div className={styles.Guess}>{turn.guess.map((guess,i) => <div className={styles.Number} key={i}>{guess}</div>)}</div>
         <div className={styles.Response}>{pegs}</div>
       </div>
     );
   });
 };
 const Turns = (props) => {
-  return (
-    <div className={styles.Turns}>
-      {renderTurns(props.turns)}
-    </div>
-  );
+  if(props.turns.length > 0){
+    return (
+      <div className={styles.Turns}>
+        {renderTurns(props.turns)}
+      </div>
+    );
+  }
+  return <div />;
 }
 
 export default Turns;

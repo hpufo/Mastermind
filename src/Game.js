@@ -19,8 +19,8 @@ function generateNumber(){
   let randomNumber = [];
   let randomIndex;
   for(let i=0; i<4; i++){
-    randomIndex = Math.floor(Math.random() * (uniqueNumbers.length-0) + 0);
-    randomNumber[i] = uniqueNumbers.splice(randomIndex,1)[0];
+    randomIndex = Math.floor(Math.random() * (uniqueNumbers.length-0) + 0);   //Get a random index from the array of uniqueNumbers
+    randomNumber[i] = uniqueNumbers.splice(randomIndex,1)[0];                 //Remove the selected value from the unique array and add it to the random numbers
   }
   console.log('random number: '+randomNumber.join(''));
   return randomNumber;
@@ -30,39 +30,36 @@ class Game extends Component {
   state = initalState;
 
   componentDidMount(){
+    this.setState({randomNumber: generateNumber()});
     getScores()
     .then((scores) => {
       this.setState({
-        randomNumber: generateNumber(),
         playerScores: scores
       });
     })
     .catch((e) => {
-      //Maybe print something to the user too?
+      this.props.setMessage('failed to get top players from the api');
       console.log(e.message);
-      this.setState({
-        randomNumber: generateNumber()
-      });
     });
     
   }
   reset = () => {
+    this.setState(Object.assign({},initalState,{randomNumber: generateNumber()}))
     //Call get scores to update the top scores
     getScores()
       .then(scores => {
-        this.setState(Object.assign({},initalState,{
-          randomNumber: generateNumber(), playerScores: scores
-        }));
+        this.setState({playerScores: scores});
       })
       .catch(e => {
-        this.setState(initalState); //If it fails for whatever reason 
+        this.props.setMessage('failed to get top players from the api');
+        console.log(e);
       });
   }
   handleChange = (index, e) => {
     if(/^[0-9]?$/.test(e.target.value)){
       const guess = [...this.state.guess];
-      //If pareseInt fails because value is an empty string then set state to an empty string
-      guess[index] = parseInt(e.target.value,10) || '';
+      //If pareseInt fails because value is an empty string then set state to an empty string otherwise parse the value
+      guess[index] = !isNaN(parseInt(e.target.value,10)) ? parseInt(e.target.value,10):'';
       this.setState({
         guess: guess
       });
@@ -73,8 +70,7 @@ class Game extends Component {
     let {guess,turns,gameOver} = this.state;
     //If the user leaves something blank exit
     if(guess.includes('')){
-      //Todo: Display message
-      //Exit
+      this.props.setMessage('Must have a guess in all positions');
       return;
     }
     let uniqueGuesses = Array.from(new Set(guess));
@@ -109,10 +105,11 @@ class Game extends Component {
     }
     this.setState({
       gameOver: gameOver,
-      turns: [...turns,{
+      turns: [{
         guess: guess,
         result: result
-      }]
+        },
+        ...turns]
     });
   }
 
@@ -120,11 +117,11 @@ class Game extends Component {
     const {guess, turns, gameOver, playerScores} = this.state;
     let view;
     if(gameOver >= 0){
-      view = <GameOver reset={this.reset} turns={turns.length} gameOver={gameOver} />;
+      view = <GameOver reset={this.reset} turns={turns.length} gameOver={gameOver} setMessage={this.setMessage}/>;
     }
     else{
       view = (
-        <div>
+        <div className={styles.Content}>
           <GuessForm guess={guess} checkGuess={this.checkGuess} handleChange={this.handleChange}/>
           <Turns turns={turns}/>
         </div>
