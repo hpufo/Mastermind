@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {saveScore} from '../service/api';
 import styles from '../scss/GameOver.scss';
 
@@ -53,5 +54,12 @@ class GameOver extends Component {
     );
   }
 }
+
+GameOver.propTypes = {
+  reset: PropTypes.func.isRequired,
+  turns: PropTypes.number.isRequired,
+  gameOver: PropTypes.number.isRequired,
+  setMessage: PropTypes.func.isRequired
+};
 
 export default GameOver;

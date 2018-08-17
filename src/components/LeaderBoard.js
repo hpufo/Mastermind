@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../scss/LeaderBoard.scss';
 
 const renderHighScores = (playerScores) => {
@@ -31,5 +32,13 @@ const LeaderBoard = (props) => {
     </div>
   );
 }
+
+LeaderBoard.propTypes = {
+  playerScores: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    score: PropTypes.number.isRequired,
+    _id: PropTypes.string
+  })).isRequired
+};
 
 export default LeaderBoard;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../scss/Turns.scss';
 
 const renderTurns = (turns) => {
@@ -38,5 +39,15 @@ const Turns = (props) => {
   }
   return <div />;
 }
+
+Turns.propTypes = {
+  turns: PropTypes.arrayOf(PropTypes.shape({
+    guess: PropTypes.arrayOf(PropTypes.number.isRequired),
+    result: PropTypes.shape({
+      rightPosition: PropTypes.number.isRequired,
+      wrongPosition: PropTypes.number.isRequired
+    }),
+  })).isRequired
+};
 
 export default Turns;

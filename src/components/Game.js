@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import GuessForm from './GuessForm';
 import Turns from './Turns';
+import PropTypes from 'prop-types';
 import {getScores} from '../service/api';
 import LeaderBoard from './LeaderBoard';
 import GameOver from './GameOver';
 import styles from '../scss/Game.scss';
-//Check multiple wins
+
 const initalState = {
   playerScores: [],
   randomNumber: [],
@@ -69,6 +70,14 @@ class Game extends Component {
       });
     }
   }
+  clearInput = (index, e) => {
+    const guess = [...this.state.guess];
+    guess[index] = '';
+    
+    this.setState({
+      guess: guess
+    });
+  }
   checkGuess = (e) => {
     e.preventDefault();
     let {guess,turns,gameOver} = this.state;
@@ -121,12 +130,22 @@ class Game extends Component {
     const {guess, turns, gameOver, playerScores} = this.state;
     let view;
     if(gameOver >= 0){
-      view = <GameOver reset={this.reset} turns={turns.length} gameOver={gameOver} setMessage={this.setMessage}/>;
+      view = <GameOver 
+              reset={this.reset} 
+              turns={turns.length} 
+              gameOver={gameOver} 
+              setMessage={this.setMessage}
+            />;
     }
     else{
       view = (
         <div className={styles.Content}>
-          <GuessForm guess={guess} checkGuess={this.checkGuess} handleChange={this.handleChange}/>
+          <GuessForm 
+            guess={guess} 
+            checkGuess={this.checkGuess} 
+            handleChange={this.handleChange} 
+            clearInput={this.clearInput}
+          />
           <Turns turns={turns}/>
         </div>
       );
@@ -139,5 +158,9 @@ class Game extends Component {
     );
   }
 }
+
+Game.propTypes = {
+  setMessage: PropTypes.func.isRequired
+};
 
 export default Game;
