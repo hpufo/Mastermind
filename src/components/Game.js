@@ -30,7 +30,9 @@ class Game extends Component {
   state = initalState;
 
   componentDidMount(){
+    //Set the random number first so that the player doesn't have to wait for the api call
     this.setState({randomNumber: generateNumber()});
+    //Api call to get the scores
     getScores()
     .then((scores) => {
       this.setState({
@@ -44,6 +46,7 @@ class Game extends Component {
     
   }
   reset = () => {
+    //Set the random number first so that the player doesn't have to wait for the api call
     this.setState(Object.assign({},initalState,{randomNumber: generateNumber()}))
     //Call get scores to update the top scores
     getScores()
@@ -56,6 +59,7 @@ class Game extends Component {
       });
   }
   handleChange = (index, e) => {
+    //Only allow 0-9 inputs in each field
     if(/^[0-9]?$/.test(e.target.value)){
       const guess = [...this.state.guess];
       //If pareseInt fails because value is an empty string then set state to an empty string otherwise parse the value

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../scss/LeaderBoard.scss';
 
 const renderHighScores = (playerScores) => {
+  //Sort by score and get the top ten players
   let topPlayers = playerScores.sort((a,b) => {
     if(a.score > b.score) return -1;
     else if(a.score < b.score) return 1;
