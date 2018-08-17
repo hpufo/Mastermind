@@ -23,12 +23,12 @@ const LeaderBoard = (props) => {
   return (
     <div className={styles.LeaderBoard}>
       <h1>Leader Board</h1>
-        {props.playerScores ? 
+        {props.loading ? 
+        <p>loading...</p>
+        :
         <ol className={styles.List}>
           {renderHighScores(props.playerScores)}
-        </ol>
-        :
-        <h2>No scores to display</h2>}
+        </ol>}
     </div>
   );
 }
@@ -38,7 +38,8 @@ LeaderBoard.propTypes = {
     name: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
     _id: PropTypes.string
-  })).isRequired
+  })).isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 export default LeaderBoard;

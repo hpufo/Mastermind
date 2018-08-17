@@ -12,6 +12,7 @@ const initalState = {
   randomNumber: [],
   turns: [],
   guess: ['','','',''],
+  loading: true,
   gameOver: -1, //-1 = game is ongoing, 0 = gameover out of turns, 1=gameover player won
 };
 
@@ -37,12 +38,14 @@ class Game extends Component {
     getScores()
     .then((scores) => {
       this.setState({
-        playerScores: scores
+        playerScores: scores,
+        loading: false
       });
     })
     .catch((e) => {
       this.props.setMessage('failed to get top players from the api');
       console.log(e.message);
+      this.setState({loading: false});
     });
     
   }
@@ -127,7 +130,7 @@ class Game extends Component {
   }
 
   render() {
-    const {guess, turns, gameOver, playerScores} = this.state;
+    const {guess, turns, gameOver, playerScores, loading} = this.state;
     let view;
     if(gameOver >= 0){
       view = <GameOver 
@@ -153,7 +156,7 @@ class Game extends Component {
     return (
       <div className={styles.Game}>
         {view}
-        <LeaderBoard playerScores={playerScores}/>
+        <LeaderBoard playerScores={playerScores} loading={loading}/>
       </div>
     );
   }
