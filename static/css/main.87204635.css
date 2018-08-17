@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif; }
+
+html, body, #root {
+  height: 100%; }
+
+.App__App___1i1rK {
+  text-align: center; }
+
+.App__message___3rrzM {
+  color: red;
+  cursor: pointer; }
+.GuessForm__Input___Ty0in {
+  font-size: 3em;
+  width: 1em;
+  padding-left: 0.2em;
+  margin-right: .5em; }
+
+.GuessForm__Button___3d32z {
+  color: black;
+  padding: 1.5em;
+  font-weight: bolder;
+  border: 1px solid black;
+  position: relative;
+  bottom: .8em;
+  background-color: lightgrey;
+  border-style: none;
+  border-radius: 5px; }
+.Turns__Turns___3r0xQ {
+  display: inline-block;
+  background-color: sandybrown;
+  padding: 1em; }
+
+.Turns__Turn___4IlL3 {
+  border: 1px solid black;
+  padding: 1em; }
+
+.Turns__Guess___3c2CK {
+  display: inline-block; }
+
+.Turns__Response___1oKk9 {
+  display: inline-block;
+  width: 50px;
+  position: relative;
+  top: 10px; }
+
+.Turns__Number___dZFmp {
+  display: inline-block;
+  font-size: 3em;
+  padding: .005em .15em .005em .15em;
+  margin-right: .5em;
+  border: 1px solid black; }
+.LeaderBoard__LeaderBoard___hcD4H {
+  width: 20%; }
+
+.LeaderBoard__List___1pvuW {
+  list-style-type: none;
+  padding: 1em 5em; }
+
+.LeaderBoard__Row___2vZOQ {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+.LeaderBoard__Number___2HpNL {
+  display: inline-block; }
+
+.LeaderBoard__Name___1DZMk {
+  display: inline-block; }
+
+.LeaderBoard__Score___2LfHm {
+  display: inline-block; }
+.GameOver__GameOver___1CeAb {
+  width: 80%; }
+.Game__Game___Ov969 {
+  width: 100%;
+  display: flex;
+  flex-direction: row; }
+
+.Game__Content___1vFUS {
+  width: 80%; }
+
+/*# sourceMappingURL=main.87204635.css.map*/
