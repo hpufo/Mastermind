@@ -35,6 +35,7 @@ class GameOver extends Component {
       return (
         <div className={styles.GameOver}>
           <h1>You won!</h1>
+          <h3>Your score: {this.scorePlayer()}</h3>
           <form onSubmit={this.onSubmit}>
             <label>Enter your name:</label>
             <input type="text" className={styles.Name} onChange={this.handleChange} value={this.state.name} />
