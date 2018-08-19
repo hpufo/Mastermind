@@ -55,10 +55,11 @@ class Game extends Component {
     //Call get scores to update the top scores
     getScores()
       .then(scores => {
-        this.setState({playerScores: scores});
+        this.setState({playerScores: scores, loading: false});
       })
       .catch(e => {
         this.props.setMessage('failed to get top players from the api');
+        this.setState({loading: false});
         console.log(e);
       });
   }
